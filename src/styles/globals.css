@@ -1,0 +1,140 @@
+/*
+* globals.css
+* Meliva.ai Design System Stylesheet
+* Version: 1.0.0 (Clipboard Fix)
+* Last Updated: 2025-07-09
+*/
+
+/* ==========================================================================
+0. Imports (Fontes e Ícones)
+========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
+
+/* ==========================================================================
+1. Colors (CSS Variables) - Base Palette
+========================================================================== */
+:root {
+--color-blue-standard: #4b9cd6;
+--color-blue-enterprise: #1a4f75;
+--color-blue-light: #dbebf6;
+--color-blue-dark: #081521;
+--color-background-dark: #112d47;
+--color-background-light: #f0f4f8;
+--color-success: #2eb23c;
+--color-alert: #f4ac45;
+--color-danger: #eb5757;
+--color-white: #ffffff;
+--code-bg-dark: #0d2033;
+--code-bg-light: #e8eef3;
+}
+
+/* ==========================================================================
+1a. Theme Variable Mapping (Semantic Colors)
+========================================================================== */
+body.theme-dark {
+--bg-page: var(--color-background-dark);
+--bg-section: var(--color-blue-dark);
+--bg-item: var(--color-background-dark);
+--bg-code: var(--code-bg-dark);
+--text-primary: var(--color-blue-light);
+--text-heading: var(--color-blue-standard);
+--text-strong: var(--color-white);
+--border-color: var(--color-blue-enterprise);
+--btn-default-text: var(--color-white);
+--btn-default-border: rgba(255, 255, 255, 0.8);
+--shadow-section: none;
+}
+
+body.theme-light {
+--bg-page: var(--color-background-light);
+--bg-section: var(--color-white);
+--bg-item: var(--color-background-light);
+--bg-code: var(--code-bg-light);
+--text-primary: var(--color-blue-enterprise);
+--text-heading: var(--color-blue-enterprise);
+--text-strong: var(--color-blue-standard);
+--border-color: #dde5ed;
+--btn-default-text: var(--color-blue-enterprise);
+--btn-default-border: var(--color-blue-enterprise);
+--shadow-section: 0 4px 12px rgba(26, 79, 117, 0.1);
+}
+
+/* ==========================================================================
+2. Structural & Layout Styles (Theme-Agnostic)
+========================================================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+font-family: 'Montserrat', sans-serif;
+font-weight: 300;
+padding: 1rem 2rem;
+transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 500; line-height: 1.2; margin-bottom: 0.75rem; }
+h1 { font-family: 'Varela Round', sans-serif; font-size: 40px; }
+h2 { font-family: 'Montserrat', sans-serif; font-size: 36px; }
+h3 { font-family: 'Varela Round', sans-serif; font-size: 30px; }
+h4 { font-family: 'Varela Round', sans-serif; font-size: 24px; }
+h5 { font-family: 'Varela Round', sans-serif; font-size: 20px; }
+h6 { font-family: 'Varela Round', sans-serif; font-size: 16px; }
+p { font-size: 15px; line-height: 1.4; max-width: 75ch; }
+p:not(:last-child) { margin-bottom: 1rem; }
+strong, b { font-size: 15px; font-weight: 600; line-height: 1.4; }
+
+.btn {
+padding: 12px 28px; border-radius: 8px; font-family: 'Montserrat', sans-serif;
+font-size: 15px; font-weight: 500; text-decoration: none; cursor: pointer;
+display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+transition: all 0.2s ease-in-out;
+}
+.btn:hover { transform: scale(1.05); opacity: 0.9; }
+.btn:active { transform: scale(1.02); opacity: 0.8; }
+
+.theme-switcher { text-align: center; margin-bottom: 2rem; }
+.theme-switcher .btn { padding: 8px 16px; }
+.main-container { max-width: 1200px; margin: 0 auto; }
+.guide-section { margin-bottom: 3rem; border-radius: 12px; padding: 2rem; }
+.guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; align-items: stretch; }
+.guide-item { padding: 1.5rem; border-radius: 8px; display: flex; flex-direction: column; height: 100%; }
+.guide-item h4 { padding-bottom: 0.5rem; margin-bottom: 1rem; }
+.guide-item .description { font-size: 13px; margin-bottom: 1rem; flex-grow: 1; }
+.live-preview { margin-bottom: 1.5rem; text-align: center; padding: 1rem 0; }
+.live-preview > * { margin: 0.5rem; }
+pre { padding: 1rem; border-radius: 8px; white-space: pre-wrap; word-break: break-all; font-family: 'Courier New', Courier, monospace; font-size: 14px; position: relative; }
+.copy-btn { position: absolute; top: 8px; right: 8px; cursor: pointer; padding: 4px; border-radius: 4px; display: flex; align-items: center; justify-content: center; opacity: 0.7; }
+.copy-btn:hover { opacity: 1; }
+.copy-btn .material-icons-round { font-size: 18px; }
+.info-grid { display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1rem; align-items: center; margin-top: auto; }
+.info-grid dt { font-weight: 500; }
+.info-grid dd { font-family: 'Courier New', Courier, monospace; display: flex; align-items: center; gap: 8px; }
+.color-swatch { width: 24px; height: 24px; border-radius: 4px; }
+.token-copy { cursor: pointer; display: inline-flex; align-items: center; gap: 4px; padding: 2px 4px; border-radius: 4px; }
+.logo-item img.logo-preview { max-width: 100%; height: auto; padding: 1rem; border-radius: 8px;}
+.logo-item p { font-size: 13px; margin-top: 1rem; }
+.brand-guidelines ul { list-style-position: inside; padding-left: 1rem; }
+.brand-guidelines li { margin-bottom: 0.75rem; }
+.final-css-container h3 { margin-top: 2rem; }
+.material-icons-round { font-family: 'Material Icons Round'; font-weight: normal; font-style: normal; font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* ==========================================================================
+3. Themed Styles (Coloring Only)
+========================================================================== */
+body { background-color: var(--bg-page); color: var(--text-primary); }
+h1, h2, h3, h4, h5, h6 { color: var(--text-heading); }
+strong, b { color: var(--text-strong); }
+.btn { color: var(--btn-default-text); border: 2px solid var(--btn-default-border); background-color: transparent; }
+.btn-primary { background-color: var(--color-blue-standard); border-color: var(--color-blue-standard); color: var(--color-white); }
+.btn-success { background-color: var(--color-success); border-color: var(--color-success); color: var(--color-white); }
+.btn-danger { background-color: var(--color-danger); border-color: var(--color-danger); color: var(--color-white); }
+.btn-alert { background-color: var(--color-alert); border-color: var(--color-alert); color: var(--color-white); }
+.btn-enterprise:hover { background-color: var(--color-blue-enterprise); color: var(--color-white); border-color: var(--color-blue-enterprise); }
+.guide-section { background-color: var(--bg-section); box-shadow: var(--shadow-section); }
+.guide-item { background-color: var(--bg-item); border: 1px solid var(--border-color); }
+.guide-item h4 { border-bottom: 1px solid var(--border-color); }
+pre { background-color: var(--bg-code); color: var(--text-primary); }
+.copy-btn { background: var(--color-blue-enterprise); border: none; color: var(--color-white); }
+.info-grid dt { color: var(--text-strong); }
+.token-copy:hover { background-color: var(--color-blue-enterprise); color: var(--color-white); }
+.color-swatch { border: 1px solid var(--border-color); }
